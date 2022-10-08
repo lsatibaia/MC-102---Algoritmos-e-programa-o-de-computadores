@@ -1,0 +1,93 @@
+dim = input()
+dim = dim.split()
+dim[0] = int(dim[0])
+dim[1] = int(dim[1])
+
+tabuleiro = []
+for i in range(dim[0]):
+  n = input()
+  n = list(n)
+  tabuleiro.append(n)
+
+p = input()
+p = p.split()
+p[0] = int(p[0])
+p[1] = int(p[1])
+
+peca = []
+for i in range(p[0]):
+  n = input()
+  n = list(n)
+  peca.append(n)
+
+a = 0
+b = 0
+c = 0
+d = 0
+i = 0
+lt = []
+lp = []
+
+while d < p[1]:
+  while c < p[0]:
+    if peca[c][d] == '#':
+      y = [c, d]
+      lp.append(y)
+    c = c + 1
+  d = d + 1
+  c = 0
+
+while b < dim[1]:
+  while a < dim[0]:
+    if tabuleiro[a][b] == '.':
+      x = [a, b]
+      i = i + 1
+      lt.append(x)
+    a = a + 1
+    if i == p[0] and b + 1 < dim[1]:
+      b = b + 1
+      a = 0
+      i = 0
+  b = b + 1
+  i = 0
+  a = 0
+
+e = 0
+f = 0
+g = 0
+s = 0
+m = [0 for i in range(p[0] * p[1])]
+while e + 1 < len(lp):
+  while e + 1 < len(lp) and f + g < len(lt):
+    if lp[e][0] - lp[e + 1][0] == lt[f][0] - lt[f + g][0]:
+      if lp[e][1] - lp[e + 1][1] == lt[f][1] - lt[f + g][1]:
+        m[e] = g
+        e = e + 1
+        f = f + g
+        g = 0
+        s = s + 1
+        if e >= len(m):
+          break
+      else:
+        g = g + 1
+    else: 
+      g = g + 1
+  f = f + 1
+  e = e + 1
+
+h = 0
+i = 0
+if s == len(lp) - 1:
+  tabuleiro[lt[0][0]][lt[0][1]] = '#'
+  while m[h] != 0:
+    tabuleiro[lt[i][0]][lt[i][1]] = '#'
+    i = i + m[h]
+    h = h + 1
+  tabuleiro[lt[i][0]][lt[i][1]] = '#'
+  for i in tabuleiro:
+    print(''.join(i))
+  print('O jogo deve continuar')
+else:
+  for i in tabuleiro:
+    print(''.join(i))
+  print('Fim de jogo')

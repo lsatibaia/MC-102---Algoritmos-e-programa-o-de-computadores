@@ -1,0 +1,106 @@
+n = int(input())
+meses = []
+a = input()
+a = a.replace(',' , ' ')
+a = a.split()
+a = list(a)
+meses.append(a)
+
+dados = []
+for i in range(n):
+  b = input()
+  b = b.replace(',' , ' ')
+  b = b.split()
+  b = list(b)
+  dados.append(b)
+
+c = input()
+c = c.split()
+c = list(c)
+
+d = []
+if c[0] == 'Produto':
+  for i in range(n):
+    e = dados[i][0]
+    d.append(e)
+if c[0] == 'Setembro':
+  for i in range(n):
+    e = int(dados[i][1])
+    d.append(e)
+if c[0] == 'Outubro':
+  for i in range(n):
+    e = int(dados[i][2])
+    d.append(e)
+if c[0] == 'Novembro':
+  for i in range(n):
+    e = int(dados[i][3])
+    d.append(e)
+
+for j in range(n):
+  for i in range(0, n - 1): 
+    if d[i] > d[i + 1]:
+      d[i] , d[i + 1] = d[i + 1] , d[i]
+      dados[i] , dados[i + 1] = dados[i + 1] , dados[i]
+
+if len(c) > 1: 
+  f = []
+  if c[1] == 'Produto':
+    for i in range(n):
+      g = dados[i][0]
+      f.append(g)
+  if c[1] == 'Setembro':
+    for i in range(n):
+      g = int(dados[i][1])
+      f.append(g)
+  if c[1] == 'Outubro':
+    for i in range(n):
+      g = int(dados[i][2])
+      f.append(g)
+  if c[1] == 'Novembro':
+    for i in range(n):
+      g = int(dados[i][3])
+      f.append(g)
+
+  for j in range(n):
+    for i in range(0, n - 1): 
+      if d[i] == d[i + 1]:
+        if f[i] > f[i + 1]:
+          f[i] , f[i + 1] = f[i + 1] , f[i]
+          dados[i] , dados[i + 1] = dados[i + 1] , dados[i]
+
+if len(c) > 2:
+  h = []
+  if c[2] == 'Produto':
+    for i in range(n):
+      k = dados[i][0]
+      h.append(k)
+  if c[2] == 'Setembro':
+    for i in range(n):
+      k = int(dados[i][1])
+      h.append(k)
+  if c[2] == 'Outubro':
+    for i in range(n):
+      k = int(dados[i][2])
+      h.append(k)
+  if c[2] == 'Novembro':
+    for i in range(n):
+      k = int(dados[i][3])
+      h.append(k)
+
+  for j in range(n):
+    for i in range(0, n - 1): 
+      if d[i] == d[i + 1]:
+        if f[i] == f[i + 1]:
+          if h[i] > h[i + 1]:
+            h[i] , h[i + 1] = h[i + 1] , h[i]
+            dados[i] , dados[i + 1] = dados[i + 1] , dados[i]
+
+for i in range(n):
+  for j in range(1, len(meses[0])):
+    if int(dados[i][j]) < 10:
+      dados[i][j] = ' ' + dados[i][j]
+
+print(meses[0][0] + 11 * ' ' + meses[0][1] + 3 * ' ' + meses[0][2] + 2 * ' ' + meses[0][3])
+for i in range(n):
+  f = len(dados[i][0])
+  print(dados[i][0] + (24 - f) * ' ' + dados[i][1] + 8 * ' ' + dados[i][2] + 8 * ' ' + dados[i][3])
