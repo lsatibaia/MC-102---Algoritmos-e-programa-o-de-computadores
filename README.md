@@ -1,2 +1,4 @@
-# MC-102---Algoritmos-e-programa-o-de-computadores
-Contém todos os laboratórios feitos na matéria de MC102
+# MC-102
+Contém todos os laboratórios feitos na matéria de MC102 - Algotirmos e programação de computadores
+
+Disciplina realizada no segundo semestre de 2020, disponibilizada de forma remota pela Unicamp
